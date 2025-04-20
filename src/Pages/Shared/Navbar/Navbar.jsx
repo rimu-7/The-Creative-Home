@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import DropdownMenu from "./DropdownMenu";
 import MobileNav from "./MobileNav";
 import NavButton from "./NavButton";
@@ -13,11 +12,11 @@ const Navbar = () => {
     return localStorage.getItem("theme") === "dark";
   });
 
-  const toggleMenu = () => setIsOpen((prevIsOpen) => !prevIsOpen);
+  const toggleMenu = () => setIsOpen((prev) => !prev);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (isOpen) return; // Don't hide navbar while menu is open
+      if (isOpen) return;
       const currentScroll = window.scrollY || document.documentElement.scrollTop;
       setIsHidden(currentScroll > lastScrollTop);
       setLastScrollTop(currentScroll <= 0 ? 0 : currentScroll);
@@ -27,7 +26,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollTop, isOpen]);
 
-  // ✅ Apply dark mode globally
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
@@ -40,35 +38,28 @@ const Navbar = () => {
 
   return (
     <div
-      className={`sticky bg-opacity-90 backdrop-blur-lg top-0 p-5 mb-2 w-full transition-transform duration-800 ${isHidden ? "-translate-y-full" : "translate-y-0"
-        }`}
+      className={`sticky top-0 z-50 w-full bg-opacity-90 backdrop-blur-md transition-transform duration-700 ${
+        isHidden ? "-translate-y-full" : "translate-y-0"
+      }`}
     >
-      <div className="flex items-center justify-between px-6 h-10 sm:px-1">
-        {/* Left - Logo */}
-        <div className="flex-shrink-0">
-          <Logo />
-        </div>
-
-        {/* Center - Navbar Links (Hidden on small screens) */}
-        <div className="hidden sm:flex flex-1 justify-center">
+      <div className="flex justify-center items-center gap-4 px-4 py-2 flex-wrap">
+        <Logo />
+        <div className="hidden sm:block">
           <DropdownMenu />
         </div>
 
-        {/* Right - Mobile Menu Button */}
+        <button
+          onClick={() => setDarkMode(!darkMode)}
+          className="text-3xl rounded-md"
+        >
+          {darkMode ? "☀️" : "🌚"}
+        </button>
+
         <div className="sm:hidden">
           <NavButton isOpen={isOpen} toggleMenu={toggleMenu} />
         </div>
-
-        {/* ✅ Dark Mode Toggle Button */}
-        <button
-          onClick={() => setDarkMode(!darkMode)}
-          className="px-4 py-2 ml-4 text-2xl rounded-md"
-        >
-          {darkMode ? "☀️" : "🌙"}
-        </button>
       </div>
 
-      {/* Mobile Navigation */}
       {isOpen && <MobileNav isOpen={isOpen} toggleMenu={toggleMenu} />}
     </div>
   );

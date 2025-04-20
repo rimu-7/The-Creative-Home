@@ -35,7 +35,7 @@ const MobileNav = ({ isOpen, toggleMenu }) => {
 
   return (
     <motion.ul
-      className="flex flex-col gap-6 mt-5 ml-5 text-lg"
+      className="flex flex-col justify-center items-center gap-6 "
       initial="hidden"
       animate={isOpen ? "visible" : "hidden"}
       variants={dropdownVariants}
@@ -62,7 +62,7 @@ const MobileNav = ({ isOpen, toggleMenu }) => {
           {selectedTab === item.path && (
             <motion.div
               layoutId="underline"
-              className="absolute left-0 right h-[3px]  bottom-[-4px]"
+              className="absolute left-0 right"
               initial={false}
               animate={{ backgroundColor: "" }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}

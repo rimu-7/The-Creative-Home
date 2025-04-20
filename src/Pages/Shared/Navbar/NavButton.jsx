@@ -2,9 +2,11 @@ import React from "react";
 
 const NavButton = ({ isOpen, toggleMenu }) => {
   return (
-    <button className="focus:outline-none sm:hidden" onClick={toggleMenu} aria-label="Toggle Menu">
+    <button className="focus:outline-none sm:hidden" 
+      onClick={toggleMenu} aria-label="Toggle Menu"
+    >
       <svg
-        className="w-6 h-6"
+        className="w-10 h-10"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"

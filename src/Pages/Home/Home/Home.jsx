@@ -33,7 +33,7 @@ function Home() {
             "url('https://images.pexels.com/photos/27925200/pexels-photo-27925200.jpeg')",
         }}
       >
-        <div className="grid grid-cols-3 grid-rows-1 gap-4 z-0 ">
+        <div className="grid grid-cols-1 mt-30 mb-30 md:grid-cols-3 gap-4 z-0 ">
           {/* Left Box */}
           <div
             className="h-96 w-96 border rounded-xl  "
@@ -45,17 +45,17 @@ function Home() {
             }}
           >
             <div className="w-full h-full  backdrop-blur-[2px] rounded-xl flex justify-center items-center text-center">
-            <p className="text-4xl text-white capitalize">
-              Truly Monrovia With Executive Ms Reno Over a Lunch Chat
-            </p>
+              <p className="text-4xl capitalize">
+                Truly Monrovia With Executive Ms Reno Over a Lunch Chat
+              </p>
             </div>
           </div>
 
           {/* Middle Box - Top Charts */}
-          <div className="h-96 w-96 duration-500 border p-4 rounded-xl backdrop-blur-lg overflow-y-auto">
+          <div className="h-96 w-96 duration-500 border p-4 rounded-lg backdrop-blur-lg overflow-y-auto">
             <h2 className="text-2xl text-center font-bold mb-4">Top Charts</h2>
-            <div className=" border rounded-md">
-              <div className="grid grid-cols-3 text-xl font-semibold border-b p-2 mb-2">
+            <div className=" ">
+              <div className="grid grid-cols-3 text-xl font-semibold border p-2 mb-2">
                 <span>Artist</span>
                 <span>Song</span>
                 <span>Rank</span>
@@ -88,9 +88,9 @@ function Home() {
             }}
           >
             <div className="w-full h-full backdrop-blur-[2px] rounded-xl flex justify-center items-center text-center">
-            <p className="text-4xl text-white capitalize">
-              Sis Reno recognize for her works within the liberian music
-            </p>
+              <p className="text-4xl  capitalize">
+                Sis Reno recognize for her works within the liberian music
+              </p>
             </div>
           </div>
         </div>

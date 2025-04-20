@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Moon, Sun } from "lucide-react"; // You can use any icon library you prefer
+import { Moon, Sun } from "lucide-react";
 
 const DarkModeToggle = () => {
   const [isDark, setIsDark] = useState(
     localStorage.getItem("theme") === "dark" ||
-      (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches)
+      (!localStorage.getItem("theme") &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
   );
 
   useEffect(() => {
@@ -21,10 +22,10 @@ const DarkModeToggle = () => {
   return (
     <button
       onClick={() => setIsDark(!isDark)}
-      className="text-xl p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+      className="rounded-full pr-2 pb-1 duration-500  transition-colors"
       aria-label="Toggle Dark Mode"
     >
-      {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+      {isDark ? <Sun size={30} /> : <Moon size={30} />}
     </button>
   );
 };
