@@ -3,6 +3,7 @@ import DropdownMenu from "./DropdownMenu";
 import MobileNav from "./MobileNav";
 import NavButton from "./NavButton";
 import Logo from "./Logo";
+import DarkModeToggle from "./DarkMoodToggle";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +18,8 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (isOpen) return;
-      const currentScroll = window.scrollY || document.documentElement.scrollTop;
+      const currentScroll =
+        window.scrollY || document.documentElement.scrollTop;
       setIsHidden(currentScroll > lastScrollTop);
       setLastScrollTop(currentScroll <= 0 ? 0 : currentScroll);
     };
@@ -42,24 +44,27 @@ const Navbar = () => {
         isHidden ? "-translate-y-full" : "translate-y-0"
       }`}
     >
-      <div className="flex justify-center items-center gap-4 px-4 py-2 flex-wrap">
+      <div className="flex items-center justify-between px-4 py-3 space-x-6 flex-wrap">
         <Logo />
+
         <div className="hidden sm:block">
           <DropdownMenu />
         </div>
-
-        <button
-          onClick={() => setDarkMode(!darkMode)}
-          className="text-3xl rounded-md"
-        >
-          {darkMode ? "☀️" : "🌚"}
-        </button>
-
-        <div className="sm:hidden">
-          <NavButton isOpen={isOpen} toggleMenu={toggleMenu} />
+        <div className="flex justify-between items-center">
+          {/* <button
+            onClick={() => setDarkMode(!darkMode)}
+            className="text-4xl rounded-md"
+          >
+            {darkMode ? "☀️" : "🌚"}
+          </button> */}
+          <DarkModeToggle/>
+          <div className="sm:hidden">
+            <NavButton isOpen={isOpen} toggleMenu={toggleMenu} />
+          </div>
         </div>
       </div>
 
+      {/* Mobile Navigation */}
       {isOpen && <MobileNav isOpen={isOpen} toggleMenu={toggleMenu} />}
     </div>
   );
